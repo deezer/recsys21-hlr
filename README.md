@@ -1,2 +1,1 @@
-# recsys21-hlr
-Hierarchical Latent Relation Modeling for Collaborative Metric Learning
+# Hierarchical Latent Relation Modeling for Collaborative Metric Learning
