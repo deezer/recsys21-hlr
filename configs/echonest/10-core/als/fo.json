@@ -1,0 +1,63 @@
+{
+  "dataset": {
+    "name": "echonest",
+    "path": "exp/data/echonest",
+    "interactions": "filtered_triplets_plt3.csv",
+    "binary": true,
+    "pos_threshold": 6,
+    "n_core": 10,
+    "split_method": "fo",
+    "test_size": 0.2,
+    "val_size": 0.1,
+    "random_state": 2021
+  },
+  "training": {
+    "learning_rate": 5e-4,
+    "min_lr": 1e-8,
+    "optimizer": "Adam",
+    "batch_size": 1000,
+    "embedding_dim": 100,
+    "train_max_steps": 150000,
+    "save_checkpoints_steps": 1000,
+    "save_summary_steps": 100,
+    "num_epochs": 20,
+    "epoch_tolerate": 10,
+    "max_to_keep": 1,
+    "model_dir": "exp/model/als",
+    "model": {
+      "type": "als",
+      "params": {
+        "regularization": 30
+      }
+    }
+  },
+  "cache": {
+    "path": "cache/echonest",
+    "train_interactions": "train_interactions",
+    "valid_interactions": "valid_interactions",
+    "test_interactions": "test_interactions",
+    "entities": "entities"
+  },
+  "logs": {
+    "log_dir": "exp/logs",
+    "log_freq": 1000
+  },
+  "eval": {
+    "acc": false,
+    "n_users": 10000,
+    "rank": "local_rank",
+    "n_users_in_chunk": 100,
+    "n_cohort": 5,
+    "reco_dir": "exp/reco",
+    "metrics": [
+      {"name": "ndcg", "params": {"k": [10]}},
+      {"name": "mrr", "params": {"k": [10]}},
+      {"name": "map", "params": {"k": [10]}},
+      {"name": "precision", "params": {"k": [10]}},
+      {"name": "recall", "params": {"k": [10]}}
+    ],
+    "non_acc_metrics": [
+      {"name": "mmr", "params": {"k": [10]}}
+    ]
+  }
+}
